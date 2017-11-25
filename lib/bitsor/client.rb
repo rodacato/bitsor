@@ -68,12 +68,7 @@ module Bitsor
     end
 
     def inspect
-      inspected = super
-
-      inspected = inspected.gsub! @api_secret, "*******" if @api_secret
-      inspected = inspected.gsub! @api_key, "******#{@api_key[6..-1]}" if @api_key
-      inspected = inspected.gsub! @client_id, "****#{@client_id[4..-1]}" if @client_id
-      inspected
+      "Bitsor::Client(api_key: ******#{@api_key[6..-1]}, object_id: #{"0x00%x" % (object_id << 1)})"
     end
 
     def client_id=(value)
