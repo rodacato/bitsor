@@ -16,6 +16,7 @@ require 'bitsor/client/funding_destination'
 require 'bitsor/client/kyc_documents'
 require 'bitsor/client/ledger'
 require 'bitsor/client/mx_bank_codes'
+require 'bitsor/client/open_orders'
 require 'bitsor/client/open_trades'
 require 'bitsor/client/order_book'
 require 'bitsor/client/order_trades'
@@ -46,6 +47,7 @@ module Bitsor
     include Bitsor::Client::KycDocuments
     include Bitsor::Client::Ledger
     include Bitsor::Client::MxBankCodes
+    include Bitsor::Client::OpenOrders
     include Bitsor::Client::OpenTrades
     include Bitsor::Client::OrderBook
     include Bitsor::Client::OrderTrades

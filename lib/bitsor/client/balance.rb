@@ -2,7 +2,7 @@ module Bitsor
   class Client
     module Balance
       def balance
-        raise Bitsor::NotImplemented
+        get('/v3/balance/')
       end
     end
   end

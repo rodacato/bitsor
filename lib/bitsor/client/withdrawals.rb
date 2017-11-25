@@ -1,8 +1,8 @@
 module Bitsor
   class Client
     module Withdrawals
-      def withdrawals
-        raise Bitsor::NotImplemented
+      def withdrawals(limit: 25)
+        get('/v3/withdrawals', limit: limit)
       end
     end
   end

@@ -2,7 +2,7 @@ module Bitsor
   class Client
     module MxBankCodes
       def mx_bank_codes
-        raise Bitsor::NotImplemented
+        get('/v3/mx_bank_codes/')
       end
     end
   end

@@ -40,9 +40,9 @@ module Bitsor
 
     private
 
-    def request(method, path, data, options = {})
+    def request(method, path, data)
       nonce = DateTime.now.strftime('%Q')
-      message = nonce + method.to_s + path + options.to_s
+      message = nonce + method.to_s.upcase + path + data.to_s
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), api_secret, message)
 
       url = "#{endpoint}#{path}"
@@ -54,7 +54,7 @@ module Bitsor
         }
       }
 
-      if options
+      if data
         if method == :get
           request_options[:params] = data
         else

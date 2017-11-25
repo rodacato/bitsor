@@ -2,7 +2,7 @@ module Bitsor
   class Client
     module AccountStatus
       def account_status
-        raise Bitsor::NotImplemented
+        get('/v3/account_status')
       end
     end
   end

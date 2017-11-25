@@ -2,7 +2,7 @@ module Bitsor
   class Client
     module Fees
       def fees
-        raise Bitsor::NotImplemented
+        get('/v3/fees/')
       end
     end
   end

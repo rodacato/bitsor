@@ -4,7 +4,7 @@ module Bitsor
 
   module Default
 
-    API_ENDPOINT = "https://api.bitso.com/v3".freeze
+    API_ENDPOINT = "https://api.bitso.com".freeze
 
     class << self
 
