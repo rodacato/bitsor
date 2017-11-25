@@ -1,11 +1,15 @@
 require "spec_helper"
 
 RSpec.describe Bitsor do
-  it "has a version number" do
-    expect(Bitsor::VERSION).not_to be nil
-  end
+  it "harness" do
+    Bitsor.configure do |config|
+      config.api_key = ENV['API_KEY']
+      config.api_secret = ENV['API_SECRET']
+      config.client_id = ENV['CLIENT_ID']
+    end
+    #
+    # client = Bitsor::V3::Client.new
 
-  it "does something useful" do
-    expect(false).to eq(true)
+    binding.pry
   end
 end
