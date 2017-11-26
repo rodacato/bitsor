@@ -35,7 +35,7 @@ module Bitsor
     def build_error_message
       return nil if @response.nil?
       message =  "#{@request.options[:method].to_s.upcase} "
-      message << @response.options[:effective_url].to_s + "\n\t"
+      message << @response.options[:effective_url].to_s + "\n"
       message << "Code #{@body['error']['code']}: #{@body['error']['message']}"
       message
     end
