@@ -13,19 +13,19 @@ module Bitsor
     end
 
     def post(url, options = {})
-      request :post, url, options
+      request :post, url, parse_body(options)
     end
 
     def put(url, options = {})
-      request :put, url, options
+      request :put, url, parse_body(options)
     end
 
     def patch(url, options = {})
-      request :patch, url, options
+      request :patch, url, parse_body(options)
     end
 
     def delete(url, options = {})
-      request :delete, url, options
+      request :delete, url, parse_body(options)
     end
 
     def last_response
@@ -42,7 +42,6 @@ module Bitsor
 
     def request(method, path, body = nil, params = nil)
       nonce = DateTime.now.strftime('%Q')
-      params= "?#{params}"
       message = nonce + method.to_s.upcase + path + params.to_s + body.to_s
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), api_secret, message)
 
@@ -54,9 +53,7 @@ module Bitsor
           'Content-Type': 'application/json',
         }
       }
-
-      request_options[:body] = body if body && method == :post
-
+      request_options[:body] = body
       response = Typhoeus::Request.new(url, request_options).run
       @last_response = response
 
@@ -75,7 +72,13 @@ module Bitsor
       return nil if options.empty? || !options
 
       options = options.select{ |key, value| !value.nil? || (value && !value.empty?) }
-      URI.encode_www_form(options)
+      "?#{URI.encode_www_form(options)}"
+    end
+
+    def parse_body(options)
+      return '' if options.nil? || options.empty?
+      options = (options || {}).delete_if { |k, v| v.nil? }
+      options.to_json
     end
   end
 end

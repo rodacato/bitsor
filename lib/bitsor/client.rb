@@ -48,7 +48,6 @@ module Bitsor
     include Bitsor::Client::Ledger
     include Bitsor::Client::MxBankCodes
     include Bitsor::Client::OpenOrders
-    include Bitsor::Client::OpenTrades
     include Bitsor::Client::OrderBook
     include Bitsor::Client::OrderTrades
     include Bitsor::Client::Orders

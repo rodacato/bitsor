@@ -2,7 +2,7 @@ module Bitsor
   class Client
     module Orders
       def lookup_order(oid:)
-        get("/v3/orders/#{oid}")
+        get("/v3/orders/#{oid}/")
       end
 
       def place_order(book:, side:, type:, major: nil, minor: nil, price: nil)
@@ -10,7 +10,7 @@ module Bitsor
       end
 
       def cancel_order(oid:)
-        delete("/v3/orders/#{oid}")
+        delete("/v3/orders/#{oid}/")
       end
     end
   end
