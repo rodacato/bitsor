@@ -9,7 +9,7 @@ module Bitsor
   module Connection
 
     def get(url, options = {})
-      request :get, url, parse_query(options)
+      request :get, url, nil, parse_query(options)
     end
 
     def post(url, options = {})
@@ -40,12 +40,13 @@ module Bitsor
 
     private
 
-    def request(method, path, data)
+    def request(method, path, body = nil, params = nil)
       nonce = DateTime.now.strftime('%Q')
-      message = nonce + method.to_s.upcase + path + data.to_s
+      params= "?#{params}"
+      message = nonce + method.to_s.upcase + path + params.to_s + body.to_s
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), api_secret, message)
 
-      url = "#{endpoint}#{path}"
+      url = "#{endpoint}#{path}#{params}"
       request_options = {
         method: method,
         headers: {
@@ -54,13 +55,7 @@ module Bitsor
         }
       }
 
-      if data
-        if method == :get
-          request_options[:params] = data
-        else
-          request_options[:body] = data
-        end
-      end
+      request_options[:body] = body if body && method == :post
 
       response = Typhoeus::Request.new(url, request_options).run
       @last_response = response
