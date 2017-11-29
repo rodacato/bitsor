@@ -20,6 +20,7 @@ module Bitsor
       Bitsor::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", Bitsor::Default.options[key])
       end
+      @last_response = nil
       self
     end
     alias setup reset!

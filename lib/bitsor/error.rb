@@ -3,8 +3,6 @@ module Bitsor
 
     def self.from_response(response)
       status  = response.response_code
-      body    = response.body
-      headers = response.response_headers
 
       if klass =  case status
                   when 400      then Bitsor::BadRequest
@@ -28,7 +26,12 @@ module Bitsor
     def initialize(response=nil)
       @response = response
       @request = response.request
-      @body = JSON.parse(response.body)
+      @body = { 'error' => {} }
+
+      if response.body && !response.body.empty?
+        @body = JSON.parse(response.body)
+      end
+
       super(build_error_message)
     end
 
@@ -39,6 +42,8 @@ module Bitsor
       message << "Code #{@body['error']['code']}: #{@body['error']['message']} \n"
       message
     end
+
+    attr_accessor :response, :request, :body
   end
 
   # Raised on errors in the 400-499 range

@@ -1,3 +1,6 @@
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c7c2d4123ee5665ce540/test_coverage)](https://codeclimate.com/github/rodacato/bitsor/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c7c2d4123ee5665ce540/maintainability)](https://codeclimate.com/github/rodacato/bitsor/maintainability)
+
 # Bitsor
 
 Ruby wrapper for bitso.com API

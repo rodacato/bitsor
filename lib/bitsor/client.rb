@@ -3,6 +3,7 @@ require 'bitsor/error'
 require 'bitsor/concerns/configurable'
 require 'bitsor/concerns/rate_limit'
 require 'bitsor/concerns/connection'
+require 'bitsor/concerns/authorizable'
 
 require 'bitsor/client/account_status'
 require 'bitsor/client/available_books'
@@ -33,6 +34,7 @@ module Bitsor
   class Client
     include Bitsor::Configurable
     include Bitsor::Connection
+    include Bitsor::Authorizable
 
     include Bitsor::Client::AccountStatus
     include Bitsor::Client::AvailableBooks
@@ -66,7 +68,7 @@ module Bitsor
     end
 
     def inspect
-      "Bitsor::Client(api_key: ******#{@api_key[6..-1]}, object_id: #{"0x00%x" % (object_id << 1)})"
+      "Bitsor::Client(client_id: ****#{@client_id[4..-1]} api_key: ******#{@api_key[6..-1]}, object_id: #{"0x00%x" % (object_id << 1)})"
     end
 
     def client_id=(value)
