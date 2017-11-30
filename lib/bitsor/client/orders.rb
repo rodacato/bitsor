@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bitsor
   class Client
     module Orders
@@ -15,3 +17,4 @@ module Bitsor
     end
   end
 end
+

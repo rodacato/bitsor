@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bitsor
   class Client
     module Ledger
@@ -23,3 +25,4 @@ module Bitsor
     end
   end
 end
+

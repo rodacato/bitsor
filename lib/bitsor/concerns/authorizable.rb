@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bitsor
   module Authorizable
     def authenticated?
@@ -5,3 +7,4 @@ module Bitsor
     end
   end
 end
+

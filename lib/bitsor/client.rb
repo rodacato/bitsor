@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bitsor/error'
 
 require 'bitsor/concerns/configurable'
@@ -68,19 +70,14 @@ module Bitsor
     end
 
     def inspect
-      "Bitsor::Client(client_id: ****#{@client_id[4..-1]} api_key: ******#{@api_key[6..-1]}, object_id: #{"0x00%x" % (object_id << 1)})"
+      "Bitsor::Client(client_id: ****#{@client_id[4..-1]} api_key: ******#{@api_key[6..-1]}, object_id: #{format('0x00%x', (object_id << 1))})"
     end
 
-    def client_id=(value)
-      @client_id = value
-    end
+    attr_writer :client_id
 
-    def api_key=(value)
-      @api_key = value
-    end
+    attr_writer :api_key
 
-    def api_secret=(value)
-      @api_secret = value
-    end
+    attr_writer :api_secret
   end
 end
+

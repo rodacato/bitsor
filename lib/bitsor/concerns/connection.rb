@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 require 'json'
 require 'openssl'
@@ -7,7 +9,6 @@ require 'bitsor/error'
 
 module Bitsor
   module Connection
-
     def get(url, options = {})
       request :get, url, nil, parse_query(options)
     end
@@ -51,7 +52,7 @@ module Bitsor
         headers: {
           Authorization: "Bitso #{api_key}:#{nonce}:#{signature}",
           'Content-Type': 'application/json',
-        }
+        },
       }
       request_options[:body] = body
       response = Typhoeus::Request.new(url, request_options).run
@@ -71,14 +72,15 @@ module Bitsor
     def parse_query(options)
       return nil if options.empty? || !options
 
-      options = options.select{ |key, value| !value.nil? || (value && !value.empty?) }
+      options = options.select { |_key, value| !value.nil? || (value && !value.empty?) }
       "?#{URI.encode_www_form(options)}"
     end
 
     def parse_body(options)
       return '' if options.nil? || options.empty?
-      options = (options || {}).delete_if { |k, v| v.nil? }
+      options = (options || {}).delete_if { |_k, v| v.nil? }
       options.to_json
     end
   end
 end
+

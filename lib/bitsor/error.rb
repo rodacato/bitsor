@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Bitsor
   class Error < StandardError
-
     def self.from_response(response)
-      status  = response.response_code
+      status = response.response_code
 
       if klass =  case status
                   when 400      then Bitsor::BadRequest
@@ -23,7 +24,7 @@ module Bitsor
       end
     end
 
-    def initialize(response=nil)
+    def initialize(response = nil)
       @response = response
       @request = response.request
       @body = { 'error' => {} }
@@ -88,3 +89,4 @@ module Bitsor
   # Raised when 503 HTTP status code
   class ServiceUnavailable < ServerError; end
 end
+
