@@ -5,10 +5,11 @@
 version: 2
 jobs:
   build:
-    parallelism: 2
+    parallelism: 1
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.3.3-node-browsers
+       - image: circleci/php:7.1.9-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -19,6 +20,12 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
 
       # Restore bundle cache
       - type: cache-restore
@@ -39,15 +46,16 @@ jobs:
 
       # Run rspec in parallel
       - run: |
+          ./cc-test-reporter before-build
           bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
                             --out test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          ./cc-test-reporter format-coverage -t simplecov $CIRCLE_ARTIFACTS/coverage/.resultset.json
+          ./cc-test-reporter upload-coverage
 
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
-
-      - run: bundle exec codeclimate-test-reporter
 
