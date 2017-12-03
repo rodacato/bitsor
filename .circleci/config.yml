@@ -5,6 +5,7 @@
 version: 2
 jobs:
   build:
+    parallelism: 2
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.3.3-node-browsers
@@ -18,31 +19,35 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          keys: dependecy-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
 
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      # Restore bundle cache
+      - type: cache-restore
+        name: Restore bundle cache
+        key: rails-demo-bundle-{{ checksum "Gemfile.lock" }}
 
-      - save_cache:
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-
+      - run: gem install bundler -v 1.16
       - run:
-          name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+          name: Bundle Install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
 
-            bundle exec rspec --format progress \
+      # Store bundle cache
+      - type: cache-save
+        name: Store bundle cache
+        key: bitsor-bundle-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Run rspec in parallel
+      - run: |
+          bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
-                            --out /tmp/test-results/rspec.xml \
+                            --out test_results/rspec.xml \
                             --format progress \
-                            "${TEST_FILES}"
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results
+
       - run: bundle exec codeclimate-test-reporter
 
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results

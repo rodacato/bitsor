@@ -12,6 +12,8 @@ group :test do
   gem 'dotenv'
   gem 'multi_json'
   gem 'pry'
+  gem 'rspec'
+  gem 'rspec_junit_formatter'
   gem 'simplecov', require: false
   gem 'vcr', '3.0.3'
   gem 'webmock', '3.1.1'
