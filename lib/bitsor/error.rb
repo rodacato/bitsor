@@ -27,10 +27,10 @@ module Bitsor
     def initialize(response = nil)
       @response = response
       @request = response.request
-      @body = { 'error' => {} }
+      @body = { error: {} }
 
       if response.body && !response.body.empty?
-        @body = JSON.parse(response.body)
+        @body = JSON.parse(response.body, symbolize_names: true)
       end
 
       super(build_error_message)
@@ -38,10 +38,10 @@ module Bitsor
 
     def build_error_message
       return nil if @response.nil?
-      message =  "#{@request.options[:method].to_s.upcase} "
+      message =  ["#{@request.options[:method].to_s.upcase} "]
       message << @response.options[:effective_url].to_s + "\n"
-      message << "Code #{@body['error']['code']}: #{@body['error']['message']} \n"
-      message
+      message << "Code #{@body[:error][:code]}: #{@body[:error][:message]} \n"
+      message.join
     end
 
     attr_accessor :response, :request, :body

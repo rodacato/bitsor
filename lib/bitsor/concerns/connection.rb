@@ -66,7 +66,7 @@ module Bitsor
         raise error
       end
 
-      JSON.parse(response.body)['payload']
+      JSON.parse(response.body, symbolize_names: true)[:payload]
     end
 
     def parse_query(options)
