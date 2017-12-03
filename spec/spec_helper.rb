@@ -14,6 +14,9 @@ require 'vcr'
 # Requires supporting ruby files with custom matchers and macros, etc.
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
 
+# Load shared examples
+Dir[File.dirname(__FILE__) + '/shared/**/*.rb'].each { |f| require f }
+
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|
