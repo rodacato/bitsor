@@ -90,5 +90,21 @@ shared_context 'bitso response schemas' do
       )
     )
   end
+
+  let :order_schema do
+    a_hash_including(
+      book: kind_of(String),
+      original_amount: kind_of(Float),
+      unfilled_amount: kind_of(Float),
+      original_value: kind_of(Float),
+      created_at: kind_of(DateTime),
+      updated_at: kind_of(DateTime),
+      price: kind_of(Float),
+      oid: kind_of(String),
+      side: kind_of(String),
+      status: kind_of(String),
+      type: kind_of(String)
+    )
+  end
 end
 

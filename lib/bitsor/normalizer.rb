@@ -5,11 +5,12 @@ require 'time'
 module Bitsor
   class Normalizer
     SCHEMAS = {
-      account_status: 'normalize_account',
       account_balances: 'normalize_account_balances',
       account_fees: 'normalize_account_fees',
+      account_status: 'normalize_account',
       book: 'normalize_book',
       funding: 'normalize_funding',
+      order: 'normalize_order',
     }
 
     def with(type)
@@ -75,6 +76,16 @@ module Bitsor
     def normalize_funding(response_object)
       response_object[:created_at] = DateTime.parse(response_object[:created_at])
       response_object[:amount] = response_object[:amount].to_f
+      response_object
+    end
+
+    def normalize_order(response_object)
+      response_object[:original_amount] = response_object[:original_amount].to_f
+      response_object[:unfilled_amount] = response_object[:unfilled_amount].to_f
+      response_object[:original_value] = response_object[:original_value].to_f
+      response_object[:price] = response_object[:price].to_f
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
+      response_object[:updated_at] = DateTime.parse(response_object[:updated_at])
       response_object
     end
   end

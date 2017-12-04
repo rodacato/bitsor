@@ -4,7 +4,9 @@ module Bitsor
   class Client
     module Orders
       def lookup_order(oid:)
-        get("/v3/orders/#{oid}/")
+        normalize_response.with(:order) {
+          get("/v3/orders/#{oid}/")
+        }
       end
 
       def place_order(book:, side:, type:, major: nil, minor: nil, price: nil)
