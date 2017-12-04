@@ -23,6 +23,23 @@ shared_context 'bitso response schemas' do
     )
   end
 
+  let :account_balance_schema do
+    a_hash_including(
+      balances: array_including(match(balance_schema))
+    )
+  end
+
+  let :balance_schema do
+    a_hash_including(
+      currency: kind_of(String),
+      available: kind_of(Float),
+      locked: kind_of(Float),
+      total: kind_of(Float),
+      pending_deposit: kind_of(Float),
+      pending_withdrawal: kind_of(Float)
+    )
+  end
+
   let :book_schema do
     a_hash_including(
       book: kind_of(String),
@@ -31,7 +48,7 @@ shared_context 'bitso response schemas' do
       minimum_amount: kind_of(Float),
       maximum_amount: kind_of(Float),
       minimum_value: kind_of(Float),
-      maximum_value: kind_of(Float),
+      maximum_value: kind_of(Float)
     )
   end
 end

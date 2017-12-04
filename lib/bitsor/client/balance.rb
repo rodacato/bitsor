@@ -4,7 +4,9 @@ module Bitsor
   class Client
     module Balance
       def balance
-        get('/v3/balance/')
+        normalize_response.with(:account_balance) {
+          get('/v3/balance/')
+        }
       end
     end
   end
