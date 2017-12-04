@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'bitsor/error'
+require 'bitsor/normalizer'
 
 require 'bitsor/concerns/configurable'
 require 'bitsor/concerns/rate_limit'
@@ -63,6 +64,10 @@ module Bitsor
     include Bitsor::Client::UserTrades
     include Bitsor::Client::Withdrawals
 
+    attr_writer :client_id
+    attr_writer :api_key
+    attr_writer :api_secret
+
     def initialize(options = {})
       Bitsor::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key] || Bitsor.instance_variable_get(:"@#{key}"))
@@ -73,11 +78,9 @@ module Bitsor
       "Bitsor::Client(client_id: ****#{@client_id[4..-1]} api_key: ******#{@api_key[6..-1]}, object_id: #{format('0x00%x', (object_id << 1))})"
     end
 
-    attr_writer :client_id
-
-    attr_writer :api_key
-
-    attr_writer :api_secret
+    def normalize_response
+      @normalizer ||= Normalizer.new
+    end
   end
 end
 
