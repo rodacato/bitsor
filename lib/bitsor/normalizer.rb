@@ -4,7 +4,8 @@ module Bitsor
   class Normalizer
     SCHEMAS = {
       account_status: 'normalize_account',
-      account_balance: 'normalize_account_balance',
+      account_balances: 'normalize_account_balances',
+      account_fees: 'normalize_account_fees',
       book: 'normalize_book',
     }
 
@@ -35,7 +36,7 @@ module Bitsor
       response_object
     end
 
-    def normalize_account_balance(response_object)
+    def normalize_account_balances(response_object)
       response_object[:balances] = response_object[:balances].map do |balance|
         balance[:available] = balance[:available].to_f
         balance[:locked] = balance[:locked].to_f
@@ -54,6 +55,17 @@ module Bitsor
       response_object[:maximum_amount] = response_object[:maximum_amount].to_f
       response_object[:minimum_value] = response_object[:minimum_value].to_f
       response_object[:maximum_value] = response_object[:maximum_value].to_f
+      response_object
+    end
+
+    def normalize_account_fees(response_object)
+      response_object[:fees] = response_object[:fees].map do |fee|
+        fee[:fee_percent] = fee[:fee_percent].to_f
+        fee[:fee_decimal] = fee[:fee_decimal].to_f
+        fee
+      end
+      response_object[:withdrawal_fees][:btc] = response_object[:withdrawal_fees][:btc].to_f
+      response_object[:withdrawal_fees][:eth] = response_object[:withdrawal_fees][:eth].to_f
       response_object
     end
   end

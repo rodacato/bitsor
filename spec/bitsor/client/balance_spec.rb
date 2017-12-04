@@ -8,7 +8,7 @@ RSpec.describe Bitsor::Client::Balance do
   describe '#balance', :vcr do
     it 'returns the user account balance' do
       response = Bitsor.balance
-      expect(response).to match(account_balance_schema)
+      expect(response).to match(account_balances_schema)
     end
   end
 end

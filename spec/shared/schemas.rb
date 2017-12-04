@@ -23,9 +23,27 @@ shared_context 'bitso response schemas' do
     )
   end
 
-  let :account_balance_schema do
+  let :account_balances_schema do
     a_hash_including(
       balances: array_including(match(balance_schema))
+    )
+  end
+
+  let :account_fees_schema do
+    a_hash_including(
+      fees: array_including(match(fee_schema)),
+      withdrawal_fees: a_hash_including(
+        btc: kind_of(Float),
+        eth: kind_of(Float)
+      )
+    )
+  end
+
+  let :fee_schema do
+    a_hash_including(
+      book: kind_of(String),
+      fee_percent: kind_of(Float),
+      fee_decimal: kind_of(Float)
     )
   end
 
