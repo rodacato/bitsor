@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'time'
+
 module Bitsor
   class Normalizer
     SCHEMAS = {
@@ -7,6 +9,7 @@ module Bitsor
       account_balances: 'normalize_account_balances',
       account_fees: 'normalize_account_fees',
       book: 'normalize_book',
+      funding: 'normalize_funding',
     }
 
     def with(type)
@@ -66,6 +69,12 @@ module Bitsor
       end
       response_object[:withdrawal_fees][:btc] = response_object[:withdrawal_fees][:btc].to_f
       response_object[:withdrawal_fees][:eth] = response_object[:withdrawal_fees][:eth].to_f
+      response_object
+    end
+
+    def normalize_funding(response_object)
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
+      response_object[:amount] = response_object[:amount].to_f
       response_object
     end
   end

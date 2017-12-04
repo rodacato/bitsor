@@ -69,5 +69,26 @@ shared_context 'bitso response schemas' do
       maximum_value: kind_of(Float)
     )
   end
+
+  let :funding_schema do
+    a_hash_including(
+      fid: kind_of(String),
+      status: kind_of(String),
+      created_at: kind_of(DateTime),
+      currency: kind_of(String),
+      method: kind_of(String),
+      method_name: kind_of(String),
+      amount: kind_of(Float),
+      details: a_hash_including(
+        sender_name: kind_of(String),
+        sender_clabe: kind_of(String),
+        sender_bank: kind_of(String),
+        clave: kind_of(String),
+        clave_rastreo: kind_of(String),
+        numeric_reference: kind_of(String),
+        concepto: kind_of(String)
+      )
+    )
+  end
 end
 

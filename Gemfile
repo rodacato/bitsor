@@ -8,7 +8,6 @@ gemspec
 gem 'rubocop'
 
 group :test do
-  gem 'codeclimate-test-reporter'
   gem 'dotenv'
   gem 'multi_json'
   gem 'pry'
