@@ -22,5 +22,17 @@ shared_context 'bitso response schemas' do
       referral_code: kind_of(String)
     )
   end
+
+  let :book_schema do
+    a_hash_including(
+      book: kind_of(String),
+      minimum_price: kind_of(Float),
+      maximum_price: kind_of(Float),
+      minimum_amount: kind_of(Float),
+      maximum_amount: kind_of(Float),
+      minimum_value: kind_of(Float),
+      maximum_value: kind_of(Float),
+    )
+  end
 end
 
