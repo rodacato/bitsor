@@ -1,1 +1,45 @@
-{"http_interactions":[{"request":{"method":"get","uri":"https://api-dev.bitso.com/v3/funding_destination/?fund_currency=btc","body":{"encoding":"US-ASCII","base64_string":""},"headers":{"User-Agent":["Typhoeus - https://github.com/typhoeus/typhoeus"],"Authorization":["Bitso YwAADwDgHy:1512485006967:4c71f7257789bbb0095f483348b8ba41217819d0d627141f34dc9cabdad037b7"],"Content-Type":["application/json"],"Expect":[""]}},"response":{"status":{"code":500,"message":"Internal Server Error"},"headers":{"Date":["Tue, 05 Dec 2017 14:43:27 GMT"],"Content-Type":["text/html"],"Transfer-Encoding":["chunked"],"Connection":["keep-alive"],"Set-Cookie":["__cfduid=dcfa2401e38e6eb20ef92cc26a3167a681512485007; expires=Wed, 05-Dec-18 14:43:27 GMT; path=/; domain=.bitso.com; HttpOnly"],"Access-Control-Allow-Origin":["*"],"X-Frame-Options":["sameorigin"],"X-Xss-Protection":["1; mode=block"],"X-Content-Type-Options":["nosniff"],"X-Permitted-Cross-Domain-Policies":["master-only"],"Server":["cloudflare-nginx"],"Cf-Ray":["3c87c7208d376d30-SJC"]},"body":{"encoding":"UTF-8","base64_string":"PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+Cjx0aXRs\nZT5FcnJvcjwvdGl0bGU+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgo6OnNl\nbGVjdGlvbnsgYmFja2dyb3VuZC1jb2xvcjogI0UxMzMwMDsgY29sb3I6IHdo\naXRlOyB9Cjo6bW96LXNlbGVjdGlvbnsgYmFja2dyb3VuZC1jb2xvcjogI0Ux\nMzMwMDsgY29sb3I6IHdoaXRlOyB9Cjo6d2Via2l0LXNlbGVjdGlvbnsgYmFj\na2dyb3VuZC1jb2xvcjogI0UxMzMwMDsgY29sb3I6IHdoaXRlOyB9Cgpib2R5\nIHsKCWJhY2tncm91bmQtY29sb3I6ICNmZmY7CgltYXJnaW46IDQwcHg7Cglm\nb250OiAxM3B4LzIwcHggbm9ybWFsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMt\nc2VyaWY7Cgljb2xvcjogIzRGNTE1NTsKfQoKYSB7Cgljb2xvcjogIzAwMzM5\nOTsKCWJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50OwoJZm9udC13ZWln\naHQ6IG5vcm1hbDsKfQoKaDEgewoJY29sb3I6ICM0NDQ7CgliYWNrZ3JvdW5k\nLWNvbG9yOiB0cmFuc3BhcmVudDsKCWJvcmRlci1ib3R0b206IDFweCBzb2xp\nZCAjRDBEMEQwOwoJZm9udC1zaXplOiAxOXB4OwoJZm9udC13ZWlnaHQ6IG5v\ncm1hbDsKCW1hcmdpbjogMCAwIDE0cHggMDsKCXBhZGRpbmc6IDE0cHggMTVw\neCAxMHB4IDE1cHg7Cn0KCmNvZGUgewoJZm9udC1mYW1pbHk6IENvbnNvbGFz\nLCBNb25hY28sIENvdXJpZXIgTmV3LCBDb3VyaWVyLCBtb25vc3BhY2U7Cglm\nb250LXNpemU6IDEycHg7CgliYWNrZ3JvdW5kLWNvbG9yOiAjZjlmOWY5OwoJ\nYm9yZGVyOiAxcHggc29saWQgI0QwRDBEMDsKCWNvbG9yOiAjMDAyMTY2OwoJ\nZGlzcGxheTogYmxvY2s7CgltYXJnaW46IDE0cHggMCAxNHB4IDA7CglwYWRk\naW5nOiAxMnB4IDEwcHggMTJweCAxMHB4Owp9CgojY29udGFpbmVyIHsKCW1h\ncmdpbjogMTBweDsKCWJvcmRlcjogMXB4IHNvbGlkICNEMEQwRDA7Cgktd2Vi\na2l0LWJveC1zaGFkb3c6IDAgMCA4cHggI0QwRDBEMDsKfQoKcCB7CgltYXJn\naW46IDEycHggMTVweCAxMnB4IDE1cHg7Cn0KPC9zdHlsZT4KPC9oZWFkPgo8\nYm9keT4KPGRpdiBpZD0iY29udGFpbmVyIj4KPGgxPkFuIEVycm9yIFdhcyBF\nbmNvdW50ZXJlZDwvaDE+CjxwPlRoZSBjb25maWd1cmF0aW9uIGZpbGUgY3Jl\nZHNfZWFzeXBhcml0eS5waHAgZG9lcyBub3QgZXhpc3QuPC9wPiA8L2Rpdj4K\nPC9ib2R5Pgo8L2h0bWw+\n"},"http_version":null},"recorded_at":"Tue, 05 Dec 2017 14:43:27 GMT"}],"recorded_with":"VCR 3.0.3"}
+{
+	"http_interactions": [{
+		"request": {
+			"method": "get",
+			"uri": "https://api-dev.bitso.com/v3/funding_destination/?fund_currency=btc",
+			"body": {
+				"encoding": "US-ASCII",
+				"base64_string": ""
+			},
+			"headers": {
+				"User-Agent": ["Typhoeus - https://github.com/typhoeus/typhoeus"],
+				"Authorization": ["Bitso YwAADwDgHy:1512485006967:4c71f7257789bbb0095f483348b8ba41217819d0d627141f34dc9cabdad037b7"],
+				"Content-Type": ["application/json"],
+				"Expect": [""]
+			}
+		},
+		"response": {
+			"status": {
+				"code": 500,
+				"message": "Internal Server Error"
+			},
+			"headers": {
+				"Date": ["Tue, 05 Dec 2017 14:43:27 GMT"],
+				"Content-Type": ["text/html"],
+				"Transfer-Encoding": ["chunked"],
+				"Connection": ["keep-alive"],
+				"Set-Cookie": ["__cfduid=dcfa2401e38e6eb20ef92cc26a3167a681512485007; expires=Wed, 05-Dec-18 14:43:27 GMT; path=/; domain=.bitso.com; HttpOnly"],
+				"Access-Control-Allow-Origin": ["*"],
+				"X-Frame-Options": ["sameorigin"],
+				"X-Xss-Protection": ["1; mode=block"],
+				"X-Content-Type-Options": ["nosniff"],
+				"X-Permitted-Cross-Domain-Policies": ["master-only"],
+				"Server": ["cloudflare-nginx"],
+				"Cf-Ray": ["3c87c7208d376d30-SJC"]
+			},
+			"body": {
+				"encoding": "UTF-8",
+				"base64_string": "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+Cjx0aXRs\nZT5FcnJvcjwvdGl0bGU+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgo6OnNl\nbGVjdGlvbnsgYmFja2dyb3VuZC1jb2xvcjogI0UxMzMwMDsgY29sb3I6IHdo\naXRlOyB9Cjo6bW96LXNlbGVjdGlvbnsgYmFja2dyb3VuZC1jb2xvcjogI0Ux\nMzMwMDsgY29sb3I6IHdoaXRlOyB9Cjo6d2Via2l0LXNlbGVjdGlvbnsgYmFj\na2dyb3VuZC1jb2xvcjogI0UxMzMwMDsgY29sb3I6IHdoaXRlOyB9Cgpib2R5\nIHsKCWJhY2tncm91bmQtY29sb3I6ICNmZmY7CgltYXJnaW46IDQwcHg7Cglm\nb250OiAxM3B4LzIwcHggbm9ybWFsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMt\nc2VyaWY7Cgljb2xvcjogIzRGNTE1NTsKfQoKYSB7Cgljb2xvcjogIzAwMzM5\nOTsKCWJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50OwoJZm9udC13ZWln\naHQ6IG5vcm1hbDsKfQoKaDEgewoJY29sb3I6ICM0NDQ7CgliYWNrZ3JvdW5k\nLWNvbG9yOiB0cmFuc3BhcmVudDsKCWJvcmRlci1ib3R0b206IDFweCBzb2xp\nZCAjRDBEMEQwOwoJZm9udC1zaXplOiAxOXB4OwoJZm9udC13ZWlnaHQ6IG5v\ncm1hbDsKCW1hcmdpbjogMCAwIDE0cHggMDsKCXBhZGRpbmc6IDE0cHggMTVw\neCAxMHB4IDE1cHg7Cn0KCmNvZGUgewoJZm9udC1mYW1pbHk6IENvbnNvbGFz\nLCBNb25hY28sIENvdXJpZXIgTmV3LCBDb3VyaWVyLCBtb25vc3BhY2U7Cglm\nb250LXNpemU6IDEycHg7CgliYWNrZ3JvdW5kLWNvbG9yOiAjZjlmOWY5OwoJ\nYm9yZGVyOiAxcHggc29saWQgI0QwRDBEMDsKCWNvbG9yOiAjMDAyMTY2OwoJ\nZGlzcGxheTogYmxvY2s7CgltYXJnaW46IDE0cHggMCAxNHB4IDA7CglwYWRk\naW5nOiAxMnB4IDEwcHggMTJweCAxMHB4Owp9CgojY29udGFpbmVyIHsKCW1h\ncmdpbjogMTBweDsKCWJvcmRlcjogMXB4IHNvbGlkICNEMEQwRDA7Cgktd2Vi\na2l0LWJveC1zaGFkb3c6IDAgMCA4cHggI0QwRDBEMDsKfQoKcCB7CgltYXJn\naW46IDEycHggMTVweCAxMnB4IDE1cHg7Cn0KPC9zdHlsZT4KPC9oZWFkPgo8\nYm9keT4KPGRpdiBpZD0iY29udGFpbmVyIj4KPGgxPkFuIEVycm9yIFdhcyBF\nbmNvdW50ZXJlZDwvaDE+CjxwPlRoZSBjb25maWd1cmF0aW9uIGZpbGUgY3Jl\nZHNfZWFzeXBhcml0eS5waHAgZG9lcyBub3QgZXhpc3QuPC9wPiA8L2Rpdj4K\nPC9ib2R5Pgo8L2h0bWw+\n"
+			},
+			"http_version": null
+		},
+		"recorded_at": "Tue, 05 Dec 2017 14:43:27 GMT"
+	}],
+	"recorded_with": "VCR 3.0.3"
+}

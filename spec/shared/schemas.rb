@@ -106,5 +106,12 @@ shared_context 'bitso response schemas' do
       type: kind_of(String)
     )
   end
+
+  let :funding_destination_schema do
+    a_hash_including(
+      account_identifier_name: kind_of(String),
+      account_identifier: kind_of(String)
+    )
+  end
 end
 
