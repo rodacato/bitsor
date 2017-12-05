@@ -150,5 +150,19 @@ shared_context 'bitso response schemas' do
       name: kind_of(String)
     )
   end
+
+  let :ticker_schema do
+    a_hash_including(
+      book: kind_of(String),
+      volume: kind_of(Float),
+      high: kind_of(Float),
+      last: kind_of(Float),
+      low: kind_of(Float),
+      vwap: kind_of(Float),
+      ask: kind_of(Float),
+      bid: kind_of(Float),
+      created_at: kind_of(DateTime),
+    )
+  end
 end
 

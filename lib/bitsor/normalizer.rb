@@ -12,6 +12,7 @@ module Bitsor
       funding: 'normalize_funding',
       ledger: 'normalize_ledger',
       order: 'normalize_order',
+      ticker: 'normalize_ticker',
     }
 
     def with(type)
@@ -96,6 +97,18 @@ module Bitsor
         balance[:amount] = balance[:amount].to_f
         balance
       end
+      response_object
+    end
+
+    def normalize_ticker(response_object)
+      response_object[:volume] = response_object[:volume].to_f
+      response_object[:high] = response_object[:high].to_f
+      response_object[:last] = response_object[:last].to_f
+      response_object[:low] = response_object[:low].to_f
+      response_object[:vwap] = response_object[:vwap].to_f
+      response_object[:ask] = response_object[:ask].to_f
+      response_object[:bid] = response_object[:bid].to_f
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
       response_object
     end
   end
