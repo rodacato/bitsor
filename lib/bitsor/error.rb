@@ -29,8 +29,12 @@ module Bitsor
       @request = response.request
       @body = { error: {} }
 
-      if response.body && !response.body.empty?
-        @body = JSON.parse(response.body, symbolize_names: true)
+      begin
+        if response.body && !response.body.empty?
+          @body = JSON.parse(response.body, symbolize_names: true)
+        end
+      rescue JSON::ParserError => e
+        @body = { error: { code: response.response_code, message: "Internal Server Error: An Error Was Encountered" } }
       end
 
       super(build_error_message)
