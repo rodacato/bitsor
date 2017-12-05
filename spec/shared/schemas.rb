@@ -143,5 +143,12 @@ shared_context 'bitso response schemas' do
       method_name: kind_of(String)
     )
   end
+
+  let :mx_bank_code_schema do
+    a_hash_including(
+      code: kind_of(String),
+      name: kind_of(String)
+    )
+  end
 end
 
