@@ -4,9 +4,9 @@ module Bitsor
   class Client
     module AccountStatus
       def account_status
-        normalize_response.with(:account_status) {
+        normalize_response.with(:account_status) do
           get('/v3/account_status/')
-        }
+        end
       end
     end
   end

@@ -171,7 +171,7 @@ shared_context 'bitso response schemas' do
       amount: kind_of(Float),
       maker_side: kind_of(String),
       price: kind_of(Float),
-      tid: kind_of(Fixnum),
+      tid: kind_of(Integer),
       created_at: kind_of(DateTime)
     )
   end
@@ -187,7 +187,7 @@ shared_context 'bitso response schemas' do
       minor_currency: kind_of(String),
       major_currency: kind_of(String),
       oid: kind_of(String),
-      tid: kind_of(Fixnum),
+      tid: kind_of(Integer),
       price: kind_of(Float),
       side: kind_of(String),
       amount: kind_of(Float)

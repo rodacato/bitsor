@@ -19,3 +19,4 @@ RSpec.describe Bitsor::Client::Funding do
     end
   end
 end
+

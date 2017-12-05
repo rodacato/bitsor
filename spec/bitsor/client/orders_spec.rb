@@ -12,7 +12,7 @@ RSpec.describe Bitsor::Client::Orders do
         side: 'sell',
         type: 'limit',
         major: 0.05,
-        price: 400000
+        price: 400000,
       }
     end
 
@@ -49,7 +49,7 @@ RSpec.describe Bitsor::Client::Orders do
         side: 'sell',
         type: 'limit',
         major: 0.05,
-        price: 200000
+        price: 200000,
       }
     end
 
@@ -66,7 +66,7 @@ RSpec.describe Bitsor::Client::Orders do
         side: 'sell',
         type: 'limit',
         major: 0.05,
-        price: 400000
+        price: 400000,
       }
     end
 

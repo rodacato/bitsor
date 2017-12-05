@@ -13,10 +13,11 @@ RSpec.describe Bitsor::Client::FundingDestination do
 
     context 'errors' do
       it 'requires the fund_currency' do
-        expect {
+        expect do
           Bitsor.funding_destination
-        }.to raise_error(ArgumentError)
+        end.to raise_error(ArgumentError)
       end
     end
   end
 end
+

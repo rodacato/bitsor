@@ -14,3 +14,4 @@ RSpec.describe Bitsor::Client::AvailableBooks do
     end
   end
 end
+

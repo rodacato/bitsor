@@ -15,16 +15,18 @@ module Bitsor
       ticker: 'normalize_ticker',
       trade: 'normalize_trade',
       user_trade: 'normalize_user_trade',
-    }
+    }.freeze
 
     def with(type)
       method = SCHEMAS[type.to_sym] || :null_normalizer
 
       response = yield
 
-      return response.map do |response_element|
-        send method, response_element
-      end if response.class == Array
+      if response.class == Array
+        return response.map do |response_element|
+          send method, response_element
+        end
+      end
 
       send method, response
     end
