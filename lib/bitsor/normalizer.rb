@@ -13,6 +13,8 @@ module Bitsor
       ledger: 'normalize_ledger',
       order: 'normalize_order',
       ticker: 'normalize_ticker',
+      trade: 'normalize_trade',
+      user_trade: 'normalize_user_trade',
     }
 
     def with(type)
@@ -108,6 +110,24 @@ module Bitsor
       response_object[:vwap] = response_object[:vwap].to_f
       response_object[:ask] = response_object[:ask].to_f
       response_object[:bid] = response_object[:bid].to_f
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
+      response_object
+    end
+
+    def normalize_trade(response_object)
+      response_object[:amount] = response_object[:amount].to_f
+      response_object[:price] = response_object[:price].to_f
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
+      response_object
+    end
+
+    def normalize_user_trade(response_object)
+      response_object[:major] = response_object[:major].to_f
+      response_object[:minor] = response_object[:minor].to_f
+      response_object[:amount] = response_object[:amount].to_f
+      response_object[:fees_amount] = response_object[:fees_amount].to_f
+      response_object[:price] = response_object[:price].to_f
+      response_object[:tid] = response_object[:tid].to_i
       response_object[:created_at] = DateTime.parse(response_object[:created_at])
       response_object
     end

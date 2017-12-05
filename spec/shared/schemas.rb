@@ -161,7 +161,36 @@ shared_context 'bitso response schemas' do
       vwap: kind_of(Float),
       ask: kind_of(Float),
       bid: kind_of(Float),
+      created_at: kind_of(DateTime)
+    )
+  end
+
+  let :trade_schema do
+    a_hash_including(
+      book: kind_of(String),
+      amount: kind_of(Float),
+      maker_side: kind_of(String),
+      price: kind_of(Float),
+      tid: kind_of(Fixnum),
+      created_at: kind_of(DateTime)
+    )
+  end
+
+  let :user_trade_schema do
+    a_hash_including(
+      book: kind_of(String),
       created_at: kind_of(DateTime),
+      minor: kind_of(Float),
+      major: kind_of(Float),
+      fees_amount: kind_of(Float),
+      fees_currency: kind_of(String),
+      minor_currency: kind_of(String),
+      major_currency: kind_of(String),
+      oid: kind_of(String),
+      tid: kind_of(Fixnum),
+      price: kind_of(Float),
+      side: kind_of(String),
+      amount: kind_of(Float)
     )
   end
 end
