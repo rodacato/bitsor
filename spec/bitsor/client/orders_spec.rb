@@ -16,7 +16,7 @@ RSpec.describe Bitsor::Client::Orders do
       }
     end
 
-    it 'returns order details' do
+    it 'returns order details', :vcr do
       order = Bitsor.place_order(simple_order_options)
       response = Bitsor.lookup_order(order)
       Bitsor.cancel_order(order)
@@ -26,7 +26,7 @@ RSpec.describe Bitsor::Client::Orders do
     end
 
     context 'fulfilled orders' do
-      it 'returns the order details' do
+      it 'returns the order details', :vcr do
         response = Bitsor.lookup_order(oid: 'jfeZlSFf2heNnRqg')
         expect(response).to include(order_schema)
         expect(response.first[:status]).to eq('completed')
@@ -34,7 +34,7 @@ RSpec.describe Bitsor::Client::Orders do
     end
 
     context 'cancelled orders' do
-      it 'returns the order details' do
+      it 'returns the order details', :vcr do
         response = Bitsor.lookup_order(oid: 'RQbMyzSuww5Yu7ej')
         expect(response).to include(order_schema)
         expect(response.first[:status]).to eq('cancelled')
