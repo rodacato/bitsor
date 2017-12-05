@@ -10,6 +10,7 @@ module Bitsor
       account_status: 'normalize_account',
       book: 'normalize_book',
       funding: 'normalize_funding',
+      ledger: 'normalize_ledger',
       order: 'normalize_order',
     }
 
@@ -86,6 +87,15 @@ module Bitsor
       response_object[:price] = response_object[:price].to_f
       response_object[:created_at] = DateTime.parse(response_object[:created_at])
       response_object[:updated_at] = DateTime.parse(response_object[:updated_at])
+      response_object
+    end
+
+    def normalize_ledger(response_object)
+      response_object[:created_at] = DateTime.parse(response_object[:created_at])
+      response_object[:balance_updates] = response_object[:balance_updates].map do |balance|
+        balance[:amount] = balance[:amount].to_f
+        balance
+      end
       response_object
     end
   end

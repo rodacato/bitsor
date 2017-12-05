@@ -113,5 +113,35 @@ shared_context 'bitso response schemas' do
       account_identifier: kind_of(String)
     )
   end
+
+  let :ledger_schema do
+    a_hash_including(
+      eid: kind_of(String),
+      operation: kind_of(String),
+      created_at: kind_of(DateTime),
+      balance_updates: array_including(
+        a_hash_including(
+          currency: kind_of(String),
+          amount: kind_of(Float)
+        )
+      ),
+      details: kind_of(Hash)
+    )
+  end
+
+  let :ledger_details_schema do
+    a_hash_including(
+      tid: kind_of(String),
+      oid: kind_of(String)
+    )
+  end
+
+  let :ledger_funding_details_schema do
+    a_hash_including(
+      fid: kind_of(String),
+      method: kind_of(String),
+      method_name: kind_of(String)
+    )
+  end
 end
 

@@ -5,8 +5,8 @@ require 'spec_helper'
 RSpec.describe Bitsor::Client::FundingDestination do
   include_context 'bitso response schemas'
 
-  describe '#funding', :vcr do
-    it 'returns the user fundings ' do
+  describe '#funding_destination', :vcr do
+    it 'returns the user funding destination' do
       response = Bitsor.funding_destination(fund_currency: 'btc')
       expect(response).to match(funding_destination_schema)
     end
