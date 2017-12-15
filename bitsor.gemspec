@@ -11,10 +11,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Adrian Castillo']
   spec.email         = ['rodacato@gmail.com']
 
-  spec.summary       = 'Unofficial Ruby API for use with Bitso.'
-  spec.description   = 'Unofficial Ruby API for use with Bitso.'
+  spec.summary       = 'Unofficial Ruby API wrapper for use with Bitso.'
+  spec.description   = 'Manage your bitso account from their API endpoints'
   spec.homepage      = 'https://www.bitsotower.com'
   spec.license       = 'MIT'
+  spec.metadata      = { "source_code_uri" => "https://github.com/rodacato/bitsor" }
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
