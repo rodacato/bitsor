@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rubocop'
+gem 'gem-release'
 
 group :test do
   gem 'dotenv'
