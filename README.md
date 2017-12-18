@@ -1,8 +1,14 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/c7c2d4123ee5665ce540/maintainability)](https://codeclimate.com/github/rodacato/bitsor/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c7c2d4123ee5665ce540/test_coverage)](https://codeclimate.com/github/rodacato/bitsor/test_coverage)
+[![CircleCI](https://circleci.com/gh/rodacato/bitsor/tree/master.svg?style=svg)](https://circleci.com/gh/rodacato/bitsor/tree/master)
+
 # Bitsor
 
-Ruby wrapper for bitso.com API
+Ruby wrapper for bitso.com API, you will need an account to get the credentials to use this wrapper.
 
-**note: under development use it on your own risk**
+If you already have an account, you can get your api credentials from [here](https://bitso.com/api_setup).
+
+If you dont have already an account, consider to signup from my referal link [here](https://bitso.com/?ref=nphw).
 
 ## Quick start
 
@@ -16,7 +22,7 @@ Install via Rubygems
 
 ### Making requests
 
-[API methods][] are available as module methods (consuming module-level
+[API methods](https://bitso.com/api_info#private-rest-api) are available as module methods (consuming module-level
 configuration) or as client instance methods.
 
 ```ruby
@@ -46,7 +52,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/rodaca
 
 ## License
 
-Copyright (c) 2009-2014 Wynn Netherland, Adam Stacoviak, Erik Michaels-Ober
+Copyright (c) 2017 Adrian Castillo
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bitsor
   class Client
     module PhoneNumber
@@ -7,3 +9,4 @@ module Bitsor
     end
   end
 end
+

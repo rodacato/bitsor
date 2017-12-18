@@ -1,0 +1,49 @@
+{
+	"http_interactions": [{
+		"request": {
+			"method": "get",
+			"uri": "https://api-dev.bitso.com/v3/fundings/?limit=1",
+			"body": {
+				"encoding": "US-ASCII",
+				"base64_string": ""
+			},
+			"headers": {
+				"User-Agent": ["Typhoeus - https://github.com/typhoeus/typhoeus"],
+				"Authorization": ["Bitso YwAADwDgHy:1512346919341:74680c70ba80101253ec52597b19fd85731e0217cc09d2cb0ddfbc762138b179"],
+				"Content-Type": ["application/json"],
+				"Expect": [""]
+			}
+		},
+		"response": {
+			"status": {
+				"code": 200,
+				"message": "OK"
+			},
+			"headers": {
+				"Date": ["Mon, 04 Dec 2017 21:42:29 GMT"],
+				"Content-Type": ["application/json"],
+				"Content-Length": ["221"],
+				"Connection": ["keep-alive"],
+				"Set-Cookie": ["__cfduid=d09432ef71b6879b6dfa4a6ecf0db4a5a1512423749; expires=Tue, 04-Dec-18 21:42:29 GMT; path=/; domain=.bitso.com; HttpOnly", "__cflb=1877559458; path=/; expires=Tue, 05-Dec-17 20:42:29 GMT"],
+				"Access-Control-Allow-Origin": ["*"],
+				"Bs": ["01"],
+				"X-Frame-Options": ["sameorigin"],
+				"X-Xss-Protection": ["1; mode=block"],
+				"X-Content-Type-Options": ["nosniff"],
+				"X-Permitted-Cross-Domain-Policies": ["master-only"],
+				"Cache-Control": ["no-cache, no-store, must-revalidate"],
+				"Pragma": ["no-cache"],
+				"Expires": ["0"],
+				"Server": ["cloudflare-nginx"],
+				"Cf-Ray": ["3c81ef948e7520b4-LAX"]
+			},
+			"body": {
+				"encoding": "UTF-8",
+				"base64_string": "eyJzdWNjZXNzIjp0cnVlLCJwYXlsb2FkIjpbeyJmaWQiOiI4MmFiOTc4YjIy\nYjI1MDVjNGNjN2Y2ODQ5Y2JhNWYwMSIsInN0YXR1cyI6ImNvbXBsZXRlIiwi\nY3JlYXRlZF9hdCI6IjIwMTctMTItMDRUMTU6NDc6MDUrMDAwMCIsImN1cnJl\nbmN5IjoieHJwIiwibWV0aG9kIjoicnAiLCJtZXRob2RfbmFtZSI6IlJpcHBs\nZSIsImFtb3VudCI6IjEwLjAwMDAwMDAwIiwiZGV0YWlscyI6e319XX0=\n"
+			},
+			"http_version": null
+		},
+		"recorded_at": "Mon, 04 Dec 2017 21:42:29 GMT"
+	}],
+	"recorded_with": "VCR 3.0.3"
+}

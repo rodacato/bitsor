@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 require 'json'
 require 'openssl'
@@ -8,25 +10,24 @@ require 'bitsor/error'
 
 module Bitsor
   module Connection
-
     def get(url, options = {})
-      request :get, url, parse_query(options)
+      request :get, url, nil, parse_query(options)
     end
 
     def post(url, options = {})
-      request :post, url, options
+      request :post, url, parse_body(options)
     end
 
     def put(url, options = {})
-      request :put, url, options
+      request :put, url, parse_body(options)
     end
 
     def patch(url, options = {})
-      request :patch, url, options
+      request :patch, url, parse_body(options)
     end
 
     def delete(url, options = {})
-      request :delete, url, options
+      request :delete, url, parse_body(options)
     end
 
     def last_response
@@ -41,28 +42,20 @@ module Bitsor
 
     private
 
-    def request(method, path, data)
+    def request(method, path, body = nil, params = nil)
       nonce = DateTime.now.strftime('%Q')
-      message = nonce + method.to_s.upcase + path + data.to_s
+      message = nonce + method.to_s.upcase + path + params.to_s + body.to_s
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), api_secret, message)
 
-      url = "#{endpoint}#{path}"
+      url = "#{endpoint}#{path}#{params}"
       request_options = {
         method: method,
         headers: {
           Authorization: "Bitso #{api_key}:#{nonce}:#{signature}",
           'Content-Type': 'application/json',
-        }
+        },
       }
-
-      if data
-        if method == :get
-          request_options[:params] = data
-        else
-          request_options[:body] = data
-        end
-      end
-
+      request_options[:body] = body
       response = Typhoeus::Request.new(url, request_options).run
       @last_response = response
 
@@ -74,14 +67,21 @@ module Bitsor
         raise error
       end
 
-      JSON.parse(response.body)['payload']
+      JSON.parse(response.body, symbolize_names: true)[:payload]
     end
 
     def parse_query(options)
       return nil if options.empty? || !options
 
-      options = options.select{ |key, value| !value.nil? || (value && !value.empty?) }
-      URI.encode_www_form(options)
+      options = options.select { |_key, value| !value.nil? || (value && !value.empty?) }
+      "?#{URI.encode_www_form(options)}"
+    end
+
+    def parse_body(options)
+      return '' if options.nil? || options.empty?
+      options = (options || {}).delete_if { |_k, v| v.nil? }
+      options.to_json
     end
   end
 end
+

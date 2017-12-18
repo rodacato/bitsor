@@ -1,10 +1,9 @@
+# frozen_string_literal: true
+
 module Bitsor
   class Error < StandardError
-
     def self.from_response(response)
-      status  = response.response_code
-      body    = response.body
-      headers = response.response_headers
+      status = response.response_code
 
       if klass =  case status
                   when 400      then Bitsor::BadRequest
@@ -25,20 +24,31 @@ module Bitsor
       end
     end
 
-    def initialize(response=nil)
+    def initialize(response = nil)
       @response = response
       @request = response.request
-      @body = JSON.parse(response.body)
+      @body = { error: {} }
+
+      begin
+        if response.body && !response.body.empty?
+          @body = JSON.parse(response.body, symbolize_names: true)
+        end
+      rescue JSON::ParserError => e
+        @body = { error: { code: response.response_code, message: 'Internal Server Error: An Error Was Encountered' } }
+      end
+
       super(build_error_message)
     end
 
     def build_error_message
       return nil if @response.nil?
-      message =  "#{@request.options[:method].to_s.upcase} "
-      message << @response.options[:effective_url].to_s + "\n\t"
-      message << "Code #{@body['error']['code']}: #{@body['error']['message']}"
-      message
+      message =  ["#{@request.options[:method].to_s.upcase} "]
+      message << @response.options[:effective_url].to_s + "\n"
+      message << "Code #{@body[:error][:code]}: #{@body[:error][:message]} \n"
+      message.join
     end
+
+    attr_accessor :response, :request, :body
   end
 
   # Raised on errors in the 400-499 range
@@ -83,3 +93,4 @@ module Bitsor
   # Raised when 503 HTTP status code
   class ServiceUnavailable < ServerError; end
 end
+

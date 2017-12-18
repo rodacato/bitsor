@@ -1,13 +1,29 @@
+# frozen_string_literal: true
+
+#
 require 'simplecov'
+
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
+  SimpleCov.coverage_dir(dir)
+end
+
 SimpleCov.start
 
 require 'dotenv/load'
 require 'bundler/setup'
-require 'pry'
 require 'bitsor'
 
+require 'pry'
 require 'webmock/rspec'
 require 'vcr'
+
+# Requires supporting ruby files with custom matchers and macros, etc.
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
+
+# Load shared examples
+Dir[File.dirname(__FILE__) + '/shared/**/*.rb'].each { |f| require f }
 
 WebMock.disable_net_connect!
 
@@ -20,28 +36,37 @@ RSpec.configure do |config|
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
 
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
+  config.include Bitsor::SpecHelpers
+
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = :expect
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
+  config.example_status_persistence_file_path = 'spec/status.txt'
+
+  config.warnings = false
+
+  config.profile_examples = 10
+
+  Kernel.srand config.seed
 end
 
 VCR.configure do |c|
   c.configure_rspec_metadata!
 
   c.default_cassette_options = {
-    :serialize_with             => :json,
-    :preserve_exact_body_bytes  => true,
-    :decode_compressed_response => true,
-    :record                     => :once
+    serialize_with: :json,
+    preserve_exact_body_bytes: true,
+    decode_compressed_response: true,
+    record: :once,
   }
   c.cassette_library_dir = 'spec/cassettes'
+  c.allow_http_connections_when_no_cassette = true
   c.hook_into :webmock
 end
 
-def configure_client
-  Bitsor.configure do |config|
-    config.api_key = ENV['API_KEY']
-    config.api_secret = ENV['API_SECRET']
-    config.client_id = ENV['CLIENT_ID']
-  end
-end

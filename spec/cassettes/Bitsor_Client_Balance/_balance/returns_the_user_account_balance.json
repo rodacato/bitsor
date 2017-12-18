@@ -1,0 +1,45 @@
+{
+	"http_interactions": [{
+		"request": {
+			"method": "get",
+			"uri": "https://api-dev.bitso.com/v3/balance/",
+			"body": {
+				"encoding": "US-ASCII",
+				"base64_string": ""
+			},
+			"headers": {
+				"User-Agent": ["Typhoeus - https://github.com/typhoeus/typhoeus"],
+				"Authorization": ["Bitso YwAADwDgHy:1512346136112:cd95fd6b110430191514c08b2aba84c1bef73b1183a931b9c16a937812f19653"],
+				"Content-Type": ["application/json"],
+				"Expect": [""]
+			}
+		},
+		"response": {
+			"status": {
+				"code": 200,
+				"message": "OK"
+			},
+			"headers": {
+				"Date": ["Mon, 04 Dec 2017 00:08:58 GMT"],
+				"Content-Type": ["application/json"],
+				"Content-Length": ["923"],
+				"Connection": ["keep-alive"],
+				"Set-Cookie": ["__cfduid=dfe120426f7b2217a6e7cfc1450f71f951512346137; expires=Tue, 04-Dec-18 00:08:57 GMT; path=/; domain=.bitso.com; HttpOnly"],
+				"Access-Control-Allow-Origin": ["*"],
+				"X-Frame-Options": ["sameorigin"],
+				"X-Xss-Protection": ["1; mode=block"],
+				"X-Content-Type-Options": ["nosniff"],
+				"X-Permitted-Cross-Domain-Policies": ["master-only"],
+				"Server": ["cloudflare-nginx"],
+				"Cf-Ray": ["3c7a88be4b4f20ba-LAX"]
+			},
+			"body": {
+				"encoding": "UTF-8",
+				"base64_string": "eyJzdWNjZXNzIjp0cnVlLCJwYXlsb2FkIjp7ImJhbGFuY2VzIjpbeyJjdXJy\nZW5jeSI6ImJjaCIsImF2YWlsYWJsZSI6IjAuMDAwMDAwMDAiLCJsb2NrZWQi\nOiIwLjAwMDAwMDAwIiwidG90YWwiOiIwLjAwMDAwMDAwIiwicGVuZGluZ19k\nZXBvc2l0IjoiMC4wMDAwMDAwMCIsInBlbmRpbmdfd2l0aGRyYXdhbCI6IjAu\nMDAwMDAwMDAifSx7ImN1cnJlbmN5IjoiYnRjIiwiYXZhaWxhYmxlIjoiMTAu\nMDAwMDAwMDAiLCJsb2NrZWQiOiIwLjAwMDAwMDAwIiwidG90YWwiOiIxMC4w\nMDAwMDAwMCIsInBlbmRpbmdfZGVwb3NpdCI6IjAuMDAwMDAwMDAiLCJwZW5k\naW5nX3dpdGhkcmF3YWwiOiIwLjAwMDAwMDAwIn0seyJjdXJyZW5jeSI6ImV0\nYyIsImF2YWlsYWJsZSI6IjAuMDAwMDAwMDAiLCJsb2NrZWQiOiIwLjAwMDAw\nMDAwIiwidG90YWwiOiIwLjAwMDAwMDAwIiwicGVuZGluZ19kZXBvc2l0Ijoi\nMC4wMDAwMDAwMCIsInBlbmRpbmdfd2l0aGRyYXdhbCI6IjAuMDAwMDAwMDAi\nfSx7ImN1cnJlbmN5IjoiZXRoIiwiYXZhaWxhYmxlIjoiMC4wMDAwMDAwMCIs\nImxvY2tlZCI6IjAuMDAwMDAwMDAiLCJ0b3RhbCI6IjAuMDAwMDAwMDAiLCJw\nZW5kaW5nX2RlcG9zaXQiOiIwLjAwMDAwMDAwIiwicGVuZGluZ193aXRoZHJh\nd2FsIjoiMC4wMDAwMDAwMCJ9LHsiY3VycmVuY3kiOiJteG4iLCJhdmFpbGFi\nbGUiOiIwLjAwMDAwMDAwIiwibG9ja2VkIjoiMC4wMCIsInRvdGFsIjoiMC4w\nMCIsInBlbmRpbmdfZGVwb3NpdCI6IjAuMDAiLCJwZW5kaW5nX3dpdGhkcmF3\nYWwiOiIwLjAwIn0seyJjdXJyZW5jeSI6InhycCIsImF2YWlsYWJsZSI6IjAu\nMDAwMDAwMDAiLCJsb2NrZWQiOiIwLjAwMDAwMCIsInRvdGFsIjoiMC4wMDAw\nMDAiLCJwZW5kaW5nX2RlcG9zaXQiOiIwLjAwMDAwMCIsInBlbmRpbmdfd2l0\naGRyYXdhbCI6IjAuMDAwMDAwIn1dfX0=\n"
+			},
+			"http_version": null
+		},
+		"recorded_at": "Mon, 04 Dec 2017 00:08:58 GMT"
+	}],
+	"recorded_with": "VCR 3.0.3"
+}

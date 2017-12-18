@@ -1,15 +1,14 @@
+# frozen_string_literal: true
+
 require 'bitsor/version'
 
 module Bitsor
-
   module Default
-
-    API_ENDPOINT = "https://api.bitso.com".freeze
+    API_ENDPOINT = 'https://api.bitso.com'
 
     class << self
-
       def options
-        Hash[Bitsor::Configurable.keys.map{|key| [key, send(key)]}]
+        Hash[Bitsor::Configurable.keys.map { |key| [key, send(key)] }]
       end
 
       def client_id
@@ -29,5 +28,5 @@ module Bitsor
       end
     end
   end
-
 end
+

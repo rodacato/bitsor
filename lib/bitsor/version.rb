@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bitsor
   # Current major release.
   # @return [Integer]

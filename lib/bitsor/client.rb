@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 require 'bitsor/error'
+require 'bitsor/normalizer'
 
 require 'bitsor/concerns/configurable'
 require 'bitsor/concerns/rate_limit'
 require 'bitsor/concerns/connection'
+require 'bitsor/concerns/authorizable'
 
 require 'bitsor/client/account_status'
 require 'bitsor/client/available_books'
@@ -17,7 +21,6 @@ require 'bitsor/client/kyc_documents'
 require 'bitsor/client/ledger'
 require 'bitsor/client/mx_bank_codes'
 require 'bitsor/client/open_orders'
-require 'bitsor/client/open_trades'
 require 'bitsor/client/order_book'
 require 'bitsor/client/order_trades'
 require 'bitsor/client/orders'
@@ -34,6 +37,7 @@ module Bitsor
   class Client
     include Bitsor::Configurable
     include Bitsor::Connection
+    include Bitsor::Authorizable
 
     include Bitsor::Client::AccountStatus
     include Bitsor::Client::AvailableBooks
@@ -48,7 +52,6 @@ module Bitsor
     include Bitsor::Client::Ledger
     include Bitsor::Client::MxBankCodes
     include Bitsor::Client::OpenOrders
-    include Bitsor::Client::OpenTrades
     include Bitsor::Client::OrderBook
     include Bitsor::Client::OrderTrades
     include Bitsor::Client::Orders
@@ -61,6 +64,10 @@ module Bitsor
     include Bitsor::Client::UserTrades
     include Bitsor::Client::Withdrawals
 
+    attr_writer :client_id
+    attr_writer :api_key
+    attr_writer :api_secret
+
     def initialize(options = {})
       Bitsor::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key] || Bitsor.instance_variable_get(:"@#{key}"))
@@ -68,19 +75,12 @@ module Bitsor
     end
 
     def inspect
-      "Bitsor::Client(api_key: ******#{@api_key[6..-1]}, object_id: #{"0x00%x" % (object_id << 1)})"
+      "Bitsor::Client(client_id: ****#{@client_id[4..-1]} api_key: ******#{@api_key[6..-1]}, object_id: #{format('0x00%x', (object_id << 1))})"
     end
 
-    def client_id=(value)
-      @client_id = value
-    end
-
-    def api_key=(value)
-      @api_key = value
-    end
-
-    def api_secret=(value)
-      @api_secret = value
+    def normalize_response
+      @normalizer ||= Normalizer.new
     end
   end
 end
+
