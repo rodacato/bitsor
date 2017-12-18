@@ -11,7 +11,7 @@ module Bitsor
 
   # Current patch level.
   # @return [Integer]
-  PATCH = 1
+  PATCH = 2
 
   # Full release version.
   # @return [String]
