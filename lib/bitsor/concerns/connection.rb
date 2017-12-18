@@ -2,6 +2,7 @@ require 'date'
 require 'json'
 require 'openssl'
 require 'typhoeus'
+require 'uri'
 
 require 'bitsor/error'
 
